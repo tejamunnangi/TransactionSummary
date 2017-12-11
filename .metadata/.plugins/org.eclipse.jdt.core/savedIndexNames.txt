@@ -1,5 +1,4 @@
 INDEX VERSION 1.130+D:\Practice\TransactionSummary\.metadata\.plugins\org.eclipse.jdt.core
-3490558827.index
 4266428024.index
 756006386.index
 1929933281.index
