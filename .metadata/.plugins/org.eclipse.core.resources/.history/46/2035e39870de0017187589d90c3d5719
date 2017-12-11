@@ -1,0 +1,13 @@
+/*
+ * POJO to hold information about fees and other amounts involved in a transaction
+ */
+
+package com.beans;
+
+public class TransactionAmount {
+	
+	private Double quantityLong;
+	private Double quantityShort;
+	
+
+}

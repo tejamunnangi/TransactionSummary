@@ -1,0 +1,9 @@
+/*
+ * Bean class to hold information related to product.
+ */
+
+package com.beans;
+
+public class Product {
+	
+}

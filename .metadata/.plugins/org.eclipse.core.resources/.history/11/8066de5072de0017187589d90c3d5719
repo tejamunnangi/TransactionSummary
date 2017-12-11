@@ -1,0 +1,5 @@
+package com.dao.interfaces;
+
+public interface ProductService {
+	public Product getProductInfo();
+}

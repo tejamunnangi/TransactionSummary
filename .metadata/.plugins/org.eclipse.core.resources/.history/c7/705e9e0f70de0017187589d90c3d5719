@@ -1,0 +1,9 @@
+/*
+ * Bean class to 
+ */
+
+package com.beans;
+
+public class TransactionAmount {
+
+}

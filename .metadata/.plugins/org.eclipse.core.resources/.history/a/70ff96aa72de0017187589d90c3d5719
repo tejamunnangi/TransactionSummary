@@ -1,0 +1,7 @@
+package com.dao.interfaces;
+
+import com.beans.TransactionAmount;
+
+public interface TransactionAmountService {
+	public TransactionAmount getTransactionSummary();
+}

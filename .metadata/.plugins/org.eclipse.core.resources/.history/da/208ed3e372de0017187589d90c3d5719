@@ -1,0 +1,7 @@
+package com.dao.interfaces;
+
+import com.beans.Product;
+
+public interface ProductService {
+	public Product getProductInfo();
+}
