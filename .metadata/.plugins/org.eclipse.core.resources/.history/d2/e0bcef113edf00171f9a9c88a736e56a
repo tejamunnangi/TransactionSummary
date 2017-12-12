@@ -1,0 +1,27 @@
+package com.util;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+
+public class InputFileDescriptor {
+	public static final String INPUTDESCFILE = "InputDescriptor.txt";
+	public static String CLIENTTYPELOCATION;
+	Resource resource = new ClassPathResource(INPUTDESCFILE);
+	public String getClientTypeLocation() {
+		CLIENTTYPELOCATION = getValueFromFile("clientType");
+		return null;
+	}
+	private String getValueFromFile(String string) {
+		try {
+			InputStream inputDescriptor = resource.getInputStream();
+			BufferedReader reader = new BufferedReader(inputDescriptor);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+}

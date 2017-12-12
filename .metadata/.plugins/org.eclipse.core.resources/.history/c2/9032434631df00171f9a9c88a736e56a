@@ -1,0 +1,26 @@
+package com.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.beans.Client;
+import com.dao.interfaces.ClientDAO;
+import com.service.interfaces.ClientService;
+
+public class ClientServiceImpl implements ClientService {
+	
+	@Autowired
+	ClientDAO clientDAO;
+	
+	@Override
+	public String getClientInfo() {
+		Client clientInfo = clientDAO.getClientData();
+		clientInfo = buildClientInfo(clientInfo);
+		return null;
+	}
+	
+	private Client buildClientInfo(Client clientInfo) {
+		clientInfo.getClientNumber()
+		return null;
+	}
+
+}

@@ -1,0 +1,7 @@
+package com.dao.interfaces;
+
+import com.beans.Client;
+
+public interface ClientDAO {
+	public Client getClientInfo();
+}

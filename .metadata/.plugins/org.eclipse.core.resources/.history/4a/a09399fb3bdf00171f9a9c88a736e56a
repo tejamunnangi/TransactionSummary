@@ -1,0 +1,20 @@
+package com.util;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+
+public class InputFileDescriptor {
+	public static final String INPUTDESCFILE = "InputDescriptor.txt";
+	public static final String CLIENTTYPELOCATION;
+	Resource resource = new ClassPathResource(INPUTDESCFILE);
+	private void setClientTypeLocation() {
+		try {
+			resource.getFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

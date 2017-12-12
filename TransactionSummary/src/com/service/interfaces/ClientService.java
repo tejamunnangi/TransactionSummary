@@ -6,5 +6,5 @@ public interface ClientService {
 	/*
 	 * Combines and/or manipulates the client object for output consumption.
 	 */
-	public Client getClientInfo();
+	public String getClientInfo();
 }

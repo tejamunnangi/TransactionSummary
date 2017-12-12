@@ -1,0 +1,8 @@
+package com.util;
+
+import java.io.File;
+
+public class InputFileDescriptor {
+	File file = new File("Descriptor.txt");
+	Resource descriptorFile = new ClassPathResource("");
+}

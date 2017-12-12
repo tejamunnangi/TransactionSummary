@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.beans.Client"/>
+<fullyQualifiedTypeName name="com.beans.Product"/>
+<fullyQualifiedTypeName name="com.dao.interfaces.TransactionSummaryService"/>
+<fullyQualifiedTypeName name="com.beans.TransactionAmount"/>
+</qualifiedTypeNameHistroy>
