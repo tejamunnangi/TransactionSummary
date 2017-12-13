@@ -5,11 +5,16 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>TransactionSummary</name>
 <dependencies>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-        <version>1.5.9.RELEASE</version>
-    </dependency>
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-core</artifactId>
+	    <version>5.0.2.RELEASE</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context</artifactId>
+	    <version>5.0.2.RELEASE</version>
+	</dependency>
     <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
@@ -33,5 +38,14 @@
         </configuration>
       </plugin>
     </plugins>
+    <resources>
+        <resource>
+            <directory>src/main/resources</directory>
+            <targetPath>${project.build.directory}</targetPath>
+            <includes>
+                <include>log4j.properties</include>
+            </includes>
+        </resource>
+    </resources>
   </build>
 </project>

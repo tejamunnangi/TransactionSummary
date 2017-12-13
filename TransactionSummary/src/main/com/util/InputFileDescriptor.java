@@ -1,15 +1,25 @@
 package main.com.util;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class InputFileDescriptor {
 	public static final String INPUTDESCFILE = "InputDescriptor.txt";
 	private static String descriptorFileContent;
+	private static Logger logger = LoggerFactory.getLogger(InputFileDescriptor.class);
 	
 	private static String getDescriptorFile(){
 		if(descriptorFileContent != null) {
-			File descriptorFile = FileUtility.getFileFromClasspath(INPUTDESCFILE);
-			descriptorFileContent = FileUtility.getFileContent(descriptorFile);
+			try {
+				File descriptorFile = FileUtility.getFileFromClasspath(INPUTDESCFILE);
+				descriptorFileContent = FileUtility.getFileContent(descriptorFile);
+			} catch (FileNotFoundException e) {
+				logger.error("File, "+INPUTDESCFILE+" not found in the classpath.");
+			}
+			
 		}
 		return descriptorFileContent;
 	}

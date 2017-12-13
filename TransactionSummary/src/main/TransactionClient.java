@@ -1,14 +1,11 @@
 package main;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.List;
-
+import org.apache.log4j.PropertyConfigurator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import main.com.service.interfaces.TransactionSummaryService;
-import main.com.util.Constants;
+import main.com.util.FileUtility;
 
 public class TransactionClient {
 	
@@ -16,32 +13,10 @@ public class TransactionClient {
 	private static final String OUTPUTFILENAME = "Output.csv";
 	
 	public static void main(String... args) {
+		PropertyConfigurator.configure("log4j.properties");
 		context = new ClassPathXmlApplicationContext("Beans.xml");
 		TransactionSummaryService transactionSummaryService = (TransactionSummaryService) context.getBean("transactionSummary");
-		printResultToCSV(transactionSummaryService.getTransactionSummary());
+		FileUtility.printResultToCSV(transactionSummaryService.getTransactionSummary(), OUTPUTFILENAME);
 	}
 	
-	private static void printResultToCSV(List<String> transactionSummary) {
-		FileWriter fileWriter = null;
-		try {
-			fileWriter = new FileWriter(OUTPUTFILENAME);
-			fileWriter.append(Constants.FILE_HEADER);
-			
-			for(String transactionSummaryRow : transactionSummary) {
-				fileWriter.append(transactionSummaryRow);
-				fileWriter.append(Constants.NEW_LINE_SEPARATOR);
-			}
-				
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		finally {
-			try {
-				fileWriter.flush();
-				fileWriter.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
 }
