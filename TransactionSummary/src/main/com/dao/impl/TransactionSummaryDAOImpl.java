@@ -16,6 +16,7 @@ import main.com.dao.interfaces.TransactionSummaryDAO;
 import main.com.service.interfaces.ClientService;
 import main.com.service.interfaces.ProductService;
 import main.com.service.interfaces.TransactionAmountService;
+import main.com.util.Constants;
 import main.com.util.FileUtility;
 
 public class TransactionSummaryDAOImpl implements TransactionSummaryDAO {
@@ -60,7 +61,7 @@ public class TransactionSummaryDAOImpl implements TransactionSummaryDAO {
 			TransactionAmount transactionInfo = transactionDAO.getTransactionAmountData(transactionRow);
 			String transactionData = transactionAmountService.buildTransactionAmountInfo(transactionInfo);
 			
-			transactionSummaryData.add(clientData + "," + productData + "," + transactionData);
+			transactionSummaryData.add(clientData + Constants.COMMA_DELIMITER + productData + Constants.COMMA_DELIMITER + transactionData);
 		}
 		
 		return transactionSummaryData;
