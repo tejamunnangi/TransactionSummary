@@ -5,9 +5,12 @@
    xsi:schemaLocation = "http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
-   <bean id = "transactionSummary" class = "main.com.service.impl.TransactionSummaryServiceImpl">
-  	  <property name = "transactinSummaryDAO">
-         <bean id = "transactinSummaryDAO" class = "main.com.dao.impl.TransactionSummaryDAOImpl"/>
-      </property>
-   </bean>
+   <bean id = "transactionSummary" class = "main.com.service.impl.TransactionSummaryServiceImpl" />
+   <bean id = "transactinSummaryDAO" class = "main.com.dao.impl.TransactionSummaryDAOImpl"/>
+   <bean id = "clientDAO" class = "main.com.dao.impl.ClientDAOImpl" />
+   <bean id = "productDAO" class = "main.com.dao.impl.ProductDAOImpl" />
+   <bean id = "transactionDAO" class = "main.com.dao.impl.TransactionAmountDAOImpl" />
+   <bean id = "clientService" class = "main.com.service.impl.ClientServiceImpl" />
+   <bean id = "productService" class = "main.com.service.impl.ProductServiceImpl" />
+   <bean id = "transactionAmountService" class = "main.com.service.impl.TransactionAmountServiceImpl" />
 </beans>
