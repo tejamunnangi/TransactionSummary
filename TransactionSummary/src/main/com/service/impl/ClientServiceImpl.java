@@ -1,5 +1,7 @@
 package main.com.service.impl;
 
+import java.io.FileNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import main.com.beans.Client;
@@ -12,7 +14,7 @@ public class ClientServiceImpl implements ClientService {
 	ClientDAO clientDAO;
 	
 	@Override
-	public String getClientInfo(String transactionRow) {
+	public String getClientInfo(String transactionRow) throws FileNotFoundException {
 		Client clientData = clientDAO.getClientData(transactionRow);
 		String clientInfo = buildClientInfo(clientData);
 		return clientInfo;

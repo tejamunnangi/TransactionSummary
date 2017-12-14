@@ -1,23 +1,17 @@
-package main.com.dao.impl;
+package test.java.mock;
 
 import java.io.FileNotFoundException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import main.com.beans.TransactionAmount;
 import main.com.dao.interfaces.TransactionAmountDAO;
-import main.com.util.FileUtility;
 import main.com.util.InputFileDescriptor;
 import main.com.util.Utility;
 
-public class TransactionAmountDAOImpl implements TransactionAmountDAO {
+public class TransactionAmountDAOImplMock implements TransactionAmountDAO {
 
-	private static Logger logger = LoggerFactory.getLogger(FileUtility.class);
-	
 	@Override
 	public TransactionAmount getTransactionAmountData(String transactionRow) throws FileNotFoundException {
-		logger.debug("Trying to get the transaction amount data");
+
 		int[] locationIndices = new int[2];
 		TransactionAmount transactionAmount = new TransactionAmount();
 		
@@ -50,9 +44,9 @@ public class TransactionAmountDAOImpl implements TransactionAmountDAO {
 		locationIndices = Utility.getStartEndIndices(transactionPriceLocation);
 		String transactionPrice = transactionRow.substring(locationIndices[0] - 1, locationIndices[1]);
 		transactionAmount.setTransactionPrice(transactionPrice);
-		logger.debug("Got the transaction price data");
 		
 		return transactionAmount;
+	
 	}
 
 }

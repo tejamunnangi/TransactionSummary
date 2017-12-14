@@ -3,6 +3,7 @@
   <groupId>TransactionSummary</groupId>
   <artifactId>TransactionSummary</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
   <name>TransactionSummary</name>
 <dependencies>
 	<dependency>
@@ -25,10 +26,38 @@
         <artifactId>slf4j-log4j12</artifactId>
         <version>1.7.21</version>
     </dependency>
+	<dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <version>4.12</version>
+	</dependency>
+    <dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-test</artifactId>
+	    <version>5.0.2.RELEASE</version>
+	</dependency>
 </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
+	    <plugin>
+	    <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-dependency-plugin</artifactId>
+	    <executions>
+	        <execution>
+	            <id>copy-dependencies</id>
+	            <phase>prepare-package</phase>
+	            <goals>
+	                <goal>copy-dependencies</goal>
+	            </goals>
+	            <configuration>
+	                <outputDirectory>
+	                    ${project.build.directory}/libs
+	                </outputDirectory>
+	            </configuration>
+	        </execution>
+	    </executions>
+		</plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.5.1</version>
@@ -37,15 +66,43 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+      <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-jar-plugin</artifactId>
+		<configuration>
+		  <archive>
+			<manifest>
+				<addClasspath>true</addClasspath>
+				<mainClass>main.TransactionClient</mainClass>
+				<classpathPrefix>libs/</classpathPrefix>
+			</manifest>
+		  </archive>
+		</configuration>
+	  </plugin>
+	  <plugin>
+	    <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-assembly-plugin</artifactId>
+	    <executions>
+	        <execution>
+	            <phase>package</phase>
+	            <goals>
+	                <goal>single</goal>
+	            </goals>
+	            <configuration>
+	                <archive>
+	                <manifest>
+	                    <mainClass>
+	                        main.TransactionClient
+	                    </mainClass>
+	                </manifest>
+	                </archive>
+	                <descriptorRefs>
+	                    <descriptorRef>jar-with-dependencies</descriptorRef>
+	                </descriptorRefs>
+	            </configuration>
+	        </execution>
+	    </executions>
+	  </plugin>
     </plugins>
-    <resources>
-        <resource>
-            <directory>src/main/resources</directory>
-            <targetPath>${project.build.directory}</targetPath>
-            <includes>
-                <include>log4j.properties</include>
-            </includes>
-        </resource>
-    </resources>
   </build>
 </project>

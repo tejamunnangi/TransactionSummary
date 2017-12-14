@@ -1,5 +1,7 @@
 package main.com.service.impl;
 
+import java.io.FileNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import main.com.beans.Product;
@@ -12,7 +14,7 @@ public class ProductServiceImpl implements ProductService {
 	ProductDAO productDAO;
 
 	@Override
-	public String getProductInfo(String transactionRow) {
+	public String getProductInfo(String transactionRow) throws FileNotFoundException {
 		Product productData = productDAO.getProductData(transactionRow);
 		String productInfo = buildProductInfo(productData);
 		return productInfo;

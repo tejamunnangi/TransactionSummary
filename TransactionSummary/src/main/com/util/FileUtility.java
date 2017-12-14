@@ -1,10 +1,9 @@
 package main.com.util;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,33 +15,28 @@ public class FileUtility {
     private static Logger logger = LoggerFactory.getLogger(FileUtility.class);
     
     //Get the file from the classpath. If the file is not present, throw exception.
-	public static File getFileFromClasspath(String fileName) throws FileNotFoundException {
+	public static InputStream getFileFromClasspath(String fileName) throws FileNotFoundException {
 		logger.debug("Trying to the file, "+fileName+" from the classpath");
 		ClassLoader classLoader = InputFileDescriptor.class.getClassLoader();
-		URL resource = classLoader.getResource(fileName);
-		if(resource == null) {
+		InputStream in = classLoader.getResourceAsStream(fileName);
+		if(in == null) {
 			throw new FileNotFoundException();
 		}
-		File file = new File(resource.getFile());
 		logger.debug("File, "+fileName+" is found and returned");
-		return file;
+		return in;
 		
 	}
 	
-	public static String getFileContent(File file) {
-		logger.debug("Reading the content from the file, "+file.getName());
+	public static String getFileContent(InputStream file) {
 		StringBuilder inputDescriptor = new StringBuilder("");
 		try(Scanner scanner = new Scanner(file)) {
 			
 			while(scanner.hasNextLine()) {
 				String line = scanner.nextLine();
-				inputDescriptor.append(line).append("\n");
+				inputDescriptor.append(line).append(Constants.NEW_LINE_SEPARATOR);
 			}
 			
 			scanner.close();
-		} catch (FileNotFoundException e) {
-			logger.error("File, "+file.getName()+" not found in the classpath");
-			return null;
 		} 
 		return inputDescriptor.toString();
 	}
@@ -53,7 +47,7 @@ public class FileUtility {
 		try {
 			fileWriter = new FileWriter(fileName);
 			fileWriter.append(Constants.FILE_HEADER);
-			
+			fileWriter.append(Constants.NEW_LINE_SEPARATOR);
 			for(String transactionSummaryRow : transactionSummary) {
 				fileWriter.append(transactionSummaryRow);
 				fileWriter.append(Constants.NEW_LINE_SEPARATOR);

@@ -1,0 +1,17 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+   <bean id = "clientService" class = "main.com.service.impl.ClientServiceImpl" />
+   <bean id = "clientDAO" class = "test.java.mock.ClientDAOImplMock" />
+   <bean id = "clientInfo" class = "test.java.mock.ClientMock" />
+   <bean id = "productService" class = "main.com.service.impl.ProductServiceImpl" />
+   <bean id = "productDAO" class = "test.java.mock.ProductDAOImplMock" />
+   <bean id = "productInfo" class = "test.java.mock.ProductMock" />
+   <bean id = "transactionAmountService" class = "main.com.service.impl.TransactionAmountServiceImpl" />
+   <bean id = "transactionAmountDAO" class = "test.java.mock.TransactionAmountDAOImplMock" />
+   <bean id = "transactionAmountInfo" class = "test.java.mock.TransactionAmountMock" />
+</beans>

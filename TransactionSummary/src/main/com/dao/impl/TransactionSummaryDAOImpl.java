@@ -2,6 +2,7 @@ package main.com.dao.impl;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,14 +48,16 @@ public class TransactionSummaryDAOImpl implements TransactionSummaryDAO {
 	TransactionAmountService transactionAmountService;
 	
 	@Override
-	public List<String> getTransactionSummaryData() {
+	public List<String> getTransactionSummaryData() throws FileNotFoundException {
 		
 		List<String> transactionSummaryData = new ArrayList<String>();
 		
-		File inputFile;
+		InputStream inputFile;
 		try {
 			inputFile = FileUtility.getFileFromClasspath(INPUTFILENAME);
+			logger.debug("Value of input file is from transaction summary is: "+inputFile);
 			String fileContent = FileUtility.getFileContent(inputFile);
+			logger.debug("Value of file content is from transaction summary is: "+fileContent);
 			if(fileContent != null) {
 				String[] transactionRows = fileContent.split(Constants.NEW_LINE_SEPARATOR);
 				
@@ -79,6 +82,7 @@ public class TransactionSummaryDAOImpl implements TransactionSummaryDAO {
 			}
 		} catch (FileNotFoundException e) {
 			logger.error("File, "+INPUTFILENAME+" not found in the classpath.");
+			throw new FileNotFoundException();
 		}
 		return transactionSummaryData;
 		

@@ -1,5 +1,7 @@
 package main.com.service.interfaces;
 
+import java.io.FileNotFoundException;
+
 import main.com.beans.Client;
 
 public interface ClientService {
@@ -7,7 +9,7 @@ public interface ClientService {
 	/*
 	 * Retrieves a client object from dao layer.
 	 */
-	public String getClientInfo(String transactionRow);
+	public String getClientInfo(String transactionRow) throws FileNotFoundException;
 	
 	/*
 	 * Combines and/or manipulates the client object for output consumption.

@@ -18,6 +18,10 @@ public class Utility {
 				stringWithoutTrailingZeros = stringWithTrailingZeros.substring(i);
 				break;
 			}
+			//Oh, the irony! if all the string has is 0's, return 0.
+			else {
+				stringWithoutTrailingZeros = "0";
+			}
 		}
 		return stringWithoutTrailingZeros;
 	}

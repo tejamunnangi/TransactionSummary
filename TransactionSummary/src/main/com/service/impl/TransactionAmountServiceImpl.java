@@ -1,5 +1,7 @@
 package main.com.service.impl;
 
+import java.io.FileNotFoundException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,7 @@ public class TransactionAmountServiceImpl implements TransactionAmountService {
 	TransactionAmountDAO transactionAmountDAO;
 
 	@Override
-	public String getTransactionAmountInfo(String transactionRow) {
+	public String getTransactionAmountInfo(String transactionRow) throws FileNotFoundException {
 		TransactionAmount transactionAmountData = transactionAmountDAO.getTransactionAmountData(transactionRow);
 		String transactionAmountInfo = buildTransactionAmountInfo(transactionAmountData);
 		return transactionAmountInfo;

@@ -1,0 +1,14 @@
+clientType:4-7
+clientNumber:8-11
+clientAccountNumber:12-15
+clientSubAccountNumber:16-19
+exchangeCode:28-31
+productGroupCode:26-27
+symbol:32-37
+expirationDate:38-45
+quantityLong:53-62
+quantityShort:64-73
+exchBrokerFee:74-85
+clearingFee:90-101
+commission:106-117
+transactionPrice:148-162

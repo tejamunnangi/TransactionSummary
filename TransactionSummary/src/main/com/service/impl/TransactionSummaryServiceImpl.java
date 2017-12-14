@@ -1,5 +1,6 @@
 package main.com.service.impl;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class TransactionSummaryServiceImpl implements TransactionSummaryService 
 	TransactionSummaryDAO transactinSummaryDAO;
 
 	@Override
-	public List<String> getTransactionSummary() {
+	public List<String> getTransactionSummary() throws FileNotFoundException {
 		List<String> transactionSummary = transactinSummaryDAO.getTransactionSummaryData();
 		return transactionSummary;
 	}
